@@ -1,0 +1,71 @@
+<div class="center pos">
+  <div class="background" *ngIf="profile">
+    <mat-card class="bio">
+      <div class="spacer mb-3">
+        <img [src]="foto_perfil" class="avatar spacer" id="profile-admin" />
+      </div>
+     <ng-template #ImageFound>
+        <div>
+          <img
+            src="./assets/fotoPerfil.webp"
+            class="avatar spacer"
+            alt="noImage"
+          />
+        </div>
+      </ng-template> 
+      <button
+        mat-icon-button
+        class="margin"
+        aria-label="Icono editar"
+        type="button"
+        mat-raised-button
+        color="accent"
+        matTooltip="EditarFotoperfil"
+        (click)="openDialogEditarFotoperfil(foto_perfil)"
+      >
+        <i class="bi bi-pencil-square iconos"></i>
+      </button>
+      <p>Editar foto de perfil</p>
+      <mat-card-header>
+        <mat-card-title>{{
+          profile.nombres + " " + profile.apellidos
+        }}</mat-card-title>
+      </mat-card-header>
+
+      <h3>Telefono: {{ profile.telefono }}</h3>
+    <!--
+      <h3>Estado Civil: {{ profile.estadocivil }}</h3>
+      --> 
+      <h3>Contactame: {{ profile.email }}</h3>
+      <h3>Lugar de Residencia: {{ profile.domicilio }}</h3>
+      <h3>Nacionalidad: {{ profile.nacionalidad }}</h3>
+
+      <mat-divider></mat-divider>
+<!--
+      <h3>
+        Fecha de Nacimiento:
+        <strong>{{ profile.fechanacimiento | date: "dd/MM/yyyy" }}</strong>
+      </h3>
+-->
+      <mat-divider></mat-divider>
+
+      <h2>
+        Acerca de mi:
+        <mat-card-subtitle
+          ><strong>{{ profile.acercade }}</strong></mat-card-subtitle
+        >
+      </h2>
+      <mat-card-actions class="center d-flex justify-content-center">
+        <div>
+          <!--Icono Editar-->
+          <button
+            type="button"
+            class="btn size-icon"
+            (click)="openDialogEditarProfile(profile)">
+            <i class="bi bi-pencil-square iconos"></i>
+          </button>
+        </div>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

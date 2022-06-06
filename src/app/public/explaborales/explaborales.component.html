@@ -1,0 +1,22 @@
+<!--Experiencias Laborales-->
+<div class="d-flex justify-content-center my-2" id="explaborales">
+  <h1><span>EXPERIENCIAS LABORALES</span></h1>
+</div>
+<div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+  <div class="example-box" *ngFor="let exp of expArray" cdkDrag>
+    <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
+    <div class="header-s width-card">
+      <h2>
+        <span>Empresa: {{ exp.empresa }}</span>
+      </h2>
+      <h3 class="my-0"><span>Puesto Laboral:</span> {{ exp.puesto }}</h3>
+      <h3 class="my-0">
+        <span>Descripción de Tareas:</span> {{ exp.descripcionTareas }}
+      </h3>
+      <p class="text-secondary">
+        {{ exp.fechaInicio | date: "dd/MM/yyyy" }} -
+        {{ exp.fechaFin | date: "dd/MM/yyyy" }}
+      </p>
+    </div>
+  </div>
+</div>

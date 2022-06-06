@@ -1,0 +1,19 @@
+<div class="container">
+  <h1 class="header-s">PROYECTOS</h1>
+  <div class="grid">
+    <mat-card class="grid-item-anim" *ngFor="let proy of proyectos$ | async">
+      <mat-card-header>
+        <!-- <div mat-card-avatar></div> -->
+        <mat-card-title>{{ proy.proyecto }}</mat-card-title>
+        <mat-card-subtitle>{{ proy.tecnologia }}</mat-card-subtitle>
+      </mat-card-header>
+      <div>
+        <a mat-raised-button href="{{ proy.linkrepositorio }}"
+          ><i class="bi bi-github color-redes"></i
+        ></a>
+      </div>
+      <mat-card-actions class="center d-flex justify-content-center">
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

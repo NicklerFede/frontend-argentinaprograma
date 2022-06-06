@@ -1,0 +1,184 @@
+<mat-toolbar>
+  <div>
+    <button
+      mat-icon-button
+      *ngIf="sidenav.mode === 'over'"
+      (click)="sidenav.toggle()"
+    >
+      <mat-icon *ngIf="!sidenav.opened"> menu </mat-icon>
+      <mat-icon *ngIf="sidenav.opened"> close </mat-icon>
+    </button>
+  </div>
+  <a href="/">
+   <img class="image" src="../../../assets/APLogo-20-20.png"
+  />
+</a>
+  <div *ngIf="!mobile">
+    <span>ARGENTINA PROGRAMA - #YO PROGRAMO</span>
+  </div>
+
+  <span class="spacer"></span>
+  <div class="redes face">
+    <a href="https://www.facebook.com/Debranca" target="_blank"
+      ><i class="bi bi-facebook color-redes"></i
+    ></a>
+  </div>
+
+  <div class="redes lk">
+    <a href="https://www.github.com/NicklerFede/" target="_blank"
+      ><i class="bi bi-github color-redes"></i
+    ></a>
+  </div>
+
+  <div class="redes lk">
+    <a href="https://nicklerfede.github.io/portfolioFedeNickler.github.io/" class="text-white" target="_blank"
+      ><i class="bi bi-file-person"></i></a>
+  </div>
+
+  <div class="redes lk">
+    <a href="../../../assets/NicklerFedericoTomas.pdf" download="CV Federico Nickler" class="text-white" target="_blank"
+      ><i class="bi bi-filetype-pdf"></i></a>
+  </div>
+
+  <button mat-button *ngIf="!authService.isAdmin" (click)="irLogin()">
+    Login
+  </button>
+  <button mat-button *ngIf="authService.isAdmin" (click)="logout()">
+    Cerrar Sesion
+  </button>
+</mat-toolbar>
+
+<mat-sidenav-container fxFlexFill>
+  <mat-sidenav #sidenav="matSidenav" fxLayout="column" closed="true">
+    <div fxLayout="column">
+      <!-- BOTÓN DE  PUBLIC PROFILE-->
+      <a mat-button class="menu-button" href="#profile">
+        <mat-icon>account_circle</mat-icon>
+        <span>Inicio</span>
+      </a>
+      <!-- BOTÓN DE ADMIN PROFILE-->
+      <a
+        *ngIf="authService.isAdmin"
+        mat-button
+        class="menu-button"
+        href="/admin#profile-admin"
+      >
+        <mat-icon>account_circle</mat-icon>
+        <span>INICIO ADMIN</span>
+      </a>
+      <mat-divider></mat-divider>
+
+      <div fxLayout="column">
+        <!-- BOTÓN DE PUBLIC EDUCACION-->
+        <a
+          mat-button
+          class="menu-button"
+          aria-label="Icono de Educacion"
+          href="#educacion"
+        >
+          <mat-icon>school</mat-icon><span>Educación</span>
+        </a>
+        <!-- BOTÓN DE ADMIN EDUCACION-->
+        <a
+          *ngIf="authService.isAdmin"
+          mat-button
+          class="menu-button"
+          aria-label="Icono de Educacion"
+          href="/admin#educacion-admin"
+        >
+          <mat-icon>school</mat-icon>
+          <span>EDUCACION ADMIN</span>
+        </a>
+      </div>
+      <mat-divider></mat-divider>
+
+      <div fxLayout="column">
+        <!-- BOTÓN DE PUBLIC PROYECTOS-->
+        <a
+          mat-button
+          class="menu-button"
+          aria-label="Icono de proyecto"
+          href="#proyectos"
+        >
+          <mat-icon>menu_book</mat-icon><span>Proyectos</span>
+        </a>
+      </div>
+      <!-- BOTÓN DE ADMIN PROYECTOS-->
+      <a
+        *ngIf="authService.isAdmin"
+        mat-button
+        class="menu-button"
+        aria-label="Icono de proyecto"
+        href="/admin#proyectos-admin"
+      >
+        <mat-icon>menu_book</mat-icon>
+        <span>PROYECTOS ADMIN</span>
+      </a>
+
+      <mat-divider></mat-divider>
+      <!-- BOTÓN DE PUBLIC Experiencias Laborales-->
+      <div fxLayout="column">
+        <a
+          mat-button
+          class="menu-button"
+          aria-label="Icono de Exp Laboral"
+          href="#explaborales"
+        >
+          <mat-icon>school</mat-icon><span>Experiencias Laborales</span>
+        </a>
+        <!-- BOTÓN DE ADMIN EXPERIENCIAS LABORALES-->
+        <a
+          *ngIf="authService.isAdmin"
+          mat-button
+          class="menu-button"
+          aria-label="Icono de explaborales"
+          href="/admin#explaborales-admin"
+        >
+          <mat-icon>school</mat-icon>
+          <span>EXPLABORALES ADMIN</span>
+        </a>
+      </div>
+      <mat-divider></mat-divider>
+      <!-- BOTÓN DE PUBLIC HABILIDADES-->
+      <div fxLayout="column">
+        <a
+          mat-button
+          class="menu-button"
+          aria-label="Icono de habilidades"
+          href="#habilidad"
+        >
+          <mat-icon>align_horizontal_left</mat-icon><span>Habilidades</span>
+        </a>
+        <!-- BOTÓN DE ADMIN HABILIDADES-->
+        <a
+          *ngIf="authService.isAdmin"
+          mat-button
+          class="menu-button"
+          aria-label="Icono de habilidades"
+          href="/admin#habilidad-admin"
+        >
+          <mat-icon>align_horizontal_left</mat-icon>
+          <span>HABILIDADES ADMIN</span>
+        </a>
+      </div>
+      <mat-divider></mat-divider>
+      <!--REPOSITORIOS DE MI GITHUB-->
+      <div fxLayout="column">
+        <a
+          mat-button
+          class="menu-button"
+          aria-label="Icono de ir GITHUB"
+          href="#proyectos-github"
+        >
+          <mat-icon>align_horizontal_left</mat-icon>
+          <span>Proyectos GITHUB</span>
+        </a>
+      </div>
+    </div>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div class="content mat-elevation-z8">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
